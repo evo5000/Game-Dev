@@ -9,6 +9,8 @@ public class PlayerControler : MonoBehaviour
     public float hInput;
     public float vInput;
 
+    public float xRange = 10f;
+    public float yRange = 4.5f;
     // Start is called before the first frame update
     
 
@@ -19,9 +21,26 @@ public class PlayerControler : MonoBehaviour
         vInput = Input.GetAxis("Vertical");
 
         //
-        transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime * hInput);
+        transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime * hInput);
         //makes forward and yeha
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * vInput);
+        transform.Translate(Vector3.up * speed * Time.deltaTime * vInput);
 
+    if (transform.position.x > xRange)
+    {
+        transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+    }
+     if (transform.position.x < -xRange)
+    {
+        transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+    }
+    if (transform.position.y > yRange)
+    {
+        transform.position = new Vector3(transform.position.x, -yRange, transform.position.z);
+    }
+     if (transform.position.y < -yRange)
+    {
+        transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
+    }
+    
     }
 }
