@@ -11,6 +11,9 @@ public class PlayerControler : MonoBehaviour
 
     public float xRange = 10f;
     public float yRange = 4.5f;
+
+    public GameObject projectile;
+    private Vector3 offset = new Vector3(0,2,0);
     // Start is called before the first frame update
     
 
@@ -42,5 +45,10 @@ public class PlayerControler : MonoBehaviour
         transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
     }
     
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        Instantiate(projectile, transform.position, projectile.transform.rotation);
+    }
     }
 }
