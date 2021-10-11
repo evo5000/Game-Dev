@@ -6,8 +6,7 @@ public class PlayerControler : MonoBehaviour
 {
     // Movement stuff
     public float moveSpeed;
-    public float jump;
-
+    public float jumpForce;
     // Camera stuuf
     public float lookSensitivity; //mouse look sencitivity
     public float maxLookX; //lowest you can look down
@@ -25,21 +24,28 @@ public class PlayerControler : MonoBehaviour
         cam = Camera.main;
         rig = GetComponent<Rigidbody>();
         //disable the camera from moving more
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-    
+        if(Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+        Move();
+        CamLook();
+        
     }
+        void Jump()
+        {
+            Ray ray = new Ray(transform.position, Vector3.down);
+
+            if(Physics.Raycast(ray, 1.1f))
+                rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     void CamLook()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
@@ -55,6 +61,8 @@ public class PlayerControler : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
 
+
+        //rig.velocity = new Vector3(x, rig.velocity.y, z);
         Vector3 dir = transform.right * x + transform.forward * z;
         
         dir.y = rig.velocity.y;
