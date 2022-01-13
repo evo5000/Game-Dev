@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+// NOTE FOR SELF THIS IS ONLY SLIGHTLY HANGING ON DONT TRY TO FIX ANYTHING ITS WORKING FOR NOW BUT VERY EASY TO BREAK
 public class PlayerController : MonoBehaviour {
 	//declare the stuff
 	public Text winText;
@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour {
 		count = 0;
 		SetCountText ();
 		// ok soooooo ummmm we need this but every time i put you back in everything dies again sooooo ima just leave this here XD
+		//000000000000000000000000
 		//wintext.text = "";
+		//000000000000000000000000
 	}
 	void FixedUpdate ()
 	{
@@ -38,8 +40,9 @@ public class PlayerController : MonoBehaviour {
 	}
 	void SetCountText ()
 	{
+		//this needs to = the amount of pills there are
 		countText.text = "Count: " + count.ToString (); 
-		if (count >= 14) 
+		if (count >= 15) 
 		{
 			winText.text = "win.exe";
 		}

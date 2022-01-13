@@ -6,8 +6,8 @@ using UnityEngine;
 public class Rotator : MonoBehaviour {
 
 	void Update () {
-
-		transform.Rotate(new Vector3 (15,30,45) * Time.deltaTime);
+		// x,y,z
+		transform.Rotate(new Vector3 (10,25,45) * Time.deltaTime);
 
 	}
 
